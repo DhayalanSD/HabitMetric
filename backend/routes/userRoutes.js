@@ -273,6 +273,12 @@ router.post(
 
     try {
 
+      if (!req.file) {
+        return res.status(400).json({
+          message: "No image uploaded"
+        });
+      }
+
       const user = await User.findById(req.user._id);
 
       if (!user) {
