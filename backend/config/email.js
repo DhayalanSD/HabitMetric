@@ -1,17 +1,23 @@
 const nodemailer = require("nodemailer");
+
 console.log("📧 Email Config Loaded");
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // Use STARTTLS
+  requireTLS: true,
+
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+
+  connectionTimeout: 20000,
+  greetingTimeout: 20000,
+  socketTimeout: 20000,
 });
 
-
-
-// Optional but recommended
 transporter.verify((error, success) => {
   if (error) {
     console.log("❌ SMTP Error:", error);
@@ -28,7 +34,13 @@ const sendEmail = async (options) => {
     html: options.message,
   };
 
-  await transporter.sendMail(mailOptions);
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log("✅ Email sent successfully");
+  } catch (error) {
+    console.log("❌ Email sending failed:", error);
+    throw error;
+  }
 };
 
 module.exports = sendEmail;
