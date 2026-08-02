@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+console.log("📧 Email Config Loaded");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
