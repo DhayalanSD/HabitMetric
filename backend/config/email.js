@@ -1,38 +1,22 @@
 const nodemailer = require("nodemailer");
 
-console.log("📧 Email Config Loaded");
+console.log("📧 Brevo Email Config Loaded");
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: "smtp-relay.brevo.com",
   port: 587,
-  secure: false, // Use STARTTLS
-  requireTLS: true,
-
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
-
-  connectionTimeout: 20000,
-  greetingTimeout: 20000,
-  socketTimeout: 20000,
 });
 
-const dns = require("dns");
-
-dns.lookup("smtp.gmail.com", (err, address) => {
-  if (err) {
-    console.error("DNS Lookup Error:", err);
-  } else {
-    console.log("smtp.gmail.com resolved to:", address);
-  }
-});
-
-transporter.verify((error, success) => {
+transporter.verify((error) => {
   if (error) {
-    console.log("❌ SMTP Error:", error);
+    console.log("❌ Brevo SMTP Error:", error);
   } else {
-    console.log("✅ SMTP Server is ready");
+    console.log("✅ Brevo SMTP Connected");
   }
 });
 
