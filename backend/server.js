@@ -19,7 +19,10 @@ const notificationRoutes = require("./routes/notificationRoutes");
 const startReminderJob = require("./jobs/reminderJob");
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://habitmetric.vercel.app",
+  credentials: true
+}));
 app.use(express.json());
 app.use(
   "/uploads",
