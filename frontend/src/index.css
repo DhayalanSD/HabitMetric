@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f5f7fb;
+}
+
+
+.dashboard{
+  padding:40px;
+}
+
+
+.dashboard h1{
+  color:#222;
+}
+
+
+.cards{
+  display:flex;
+  gap:20px;
+  margin-top:30px;
+}
+
+
+.card{
+
+  background:white;
+  padding:25px;
+  width:200px;
+
+  border-radius:15px;
+
+  box-shadow:
+  0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+
+.card h2{
+  font-size:35px;
+  margin:0;
+  color:#6c63ff;
+}
+
+/* Heatmap */
+
+.react-calendar-heatmap text{
+  fill:#6b7280;
+  font-size:10px;
+}
+
+.dark .react-calendar-heatmap text{
+  fill:#9ca3af;
+}
+
+.react-calendar-heatmap .color-empty{
+  fill:#e5e7eb;
+}
+
+.dark .react-calendar-heatmap .color-empty{
+  fill:#374151;
+}
+
+.react-calendar-heatmap .color-github-1{
+  fill:#bbf7d0;
+}
+
+.react-calendar-heatmap .color-github-2{
+  fill:#4ade80;
+}
+
+.react-calendar-heatmap .color-github-3{
+  fill:#16a34a;
+}
+
+.react-calendar-heatmap .color-github-4{
+  fill:#14532d;
+}
+
+
+/* ===========================
+   Light Theme
+=========================== */
+
+body{
+    background:#f5f7fb;
+    color:#1f2937;
+    transition:0.3s;
+}
+
