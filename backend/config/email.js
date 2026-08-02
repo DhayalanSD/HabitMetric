@@ -18,6 +18,16 @@ const transporter = nodemailer.createTransport({
   socketTimeout: 20000,
 });
 
+const dns = require("dns");
+
+dns.lookup("smtp.gmail.com", (err, address) => {
+  if (err) {
+    console.error("DNS Lookup Error:", err);
+  } else {
+    console.log("smtp.gmail.com resolved to:", address);
+  }
+});
+
 transporter.verify((error, success) => {
   if (error) {
     console.log("❌ SMTP Error:", error);
